@@ -74,7 +74,7 @@ async def g_fil_mod(client, message):
 async def next_page(bot, query):
     ident, req, key, offset = query.data.split("_")
     if int(req) not in [query.from_user.id, 0]:
-        return await query.answer(BUTTON_LOCK_TEXT.format(query.from_user.first_name), show_alert=True)
+        return await query.answer("ഇത് താങ്കളുടെ സെർച്ച് റിസൾട്ട് അല്ല. ഫയൽ ലഭിക്കാനായി താങ്കൾ തന്നെ സെർച്ച് ചെയ്യുക.", show_alert=True)
     try: offset = int(offset)
     except: offset = 0
     search = temp.GP_BUTTONS.get(key)
