@@ -16,8 +16,7 @@ BATCH_FILES = {}
 @Client.on_message(filters.command("start") & filters.incoming)
 async def start(client, message):
     if message.chat.type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
-        buttons = [[           
-            InlineKeyboardButton("ꜱᴇᴀʀᴄʜ 🔎", switch_inline_query_current_chat=''), 
+        buttons = [[            
             InlineKeyboardButton("ʜᴇʟᴘ 🔈", url="https://t.me/pscsupport_bot")
         ]]
         await message.reply(START_MESSAGE.format(user=message.from_user.mention if message.from_user else message.chat.title, bot=client.mention), reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)                    
@@ -31,8 +30,7 @@ async def start(client, message):
         await db.add_user(message.from_user.id, message.from_user.first_name)
         await client.send_message(LOG_CHANNEL, script.LOG_TEXT_P.format(message.from_user.id, message.from_user.mention, message.from_user.username, temp.U_NAME))
     if len(message.command) != 2:
-        buttons = [[           
-            InlineKeyboardButton("ꜱᴇᴀʀᴄʜ 🔎", switch_inline_query_current_chat=''), 
+        buttons = [[            
             InlineKeyboardButton("ʜᴇʟᴘ 🔈", url="https://t.me/pscsupport_bot")
         ]]
         m = await message.reply_sticker("CAACAgUAAxkBAAEBvlVk7YKnYxIHVnKW2PUwoibIR2ygGAACBAADwSQxMYnlHW4Ls8gQHgQ") 
@@ -63,7 +61,6 @@ async def start(client, message):
         
     if len(message.command) == 2 and message.command[1] in ["subscribe", "error", "okay", "help"]:
         buttons = [[           
-            InlineKeyboardButton("ꜱᴇᴀʀᴄʜ 🔎", switch_inline_query_current_chat=''), 
             InlineKeyboardButton("ʜᴇʟᴘ 🔈", url="https://t.me/pscsupport_bot")
         ]]
         m = await message.reply_sticker("CAACAgUAAxkBAAEBvlVk7YKnYxIHVnKW2PUwoibIR2ygGAACBAADwSQxMYnlHW4Ls8gQHgQ")
