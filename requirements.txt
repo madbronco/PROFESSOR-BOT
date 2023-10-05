@@ -34,7 +34,5 @@ wheel
 ujson
 wget
 pytz
-
-
-
-
+levenshtein
+fuzzywuzzy
