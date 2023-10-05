@@ -180,9 +180,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
         
     if query.data.startswith("file"):        
         ident, req, file_id = query.data.split("#")
-        #if BUTTON_LOCK:
-            #if int(req) not in [query.from_user.id, 0]:
-                #return await query.answer("search yourself", show_alert=True)
+        if BUTTON_LOCK:
+            if int(req) not in [query.from_user.id, 0]:
+                return await query.answer(BUTTON_LOCK_TEXT.format(query=query.from_user.first_name), show_alert=True)
         files_ = await get_file_details(file_id)
         if not files_: return await query.answer('No Such File Exist.')
         files = files_[0]
@@ -199,8 +199,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
             elif settings['botpm']:
                 return await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
             else:
-                await client.send_cached_media(chat_id=query.from_user.id, file_id=file_id, caption=f_caption, protect_content=False if ident == "filep" else False)
-                await query.answer('ഞാൻ താങ്കൾക് ഇതിന്റെ ഫയൽ നേരിട്ട് മെസ്സേജ് അയച്ചിട്ടുണ്ട്', show_alert=True)
+                await client.send_cached_media(chat_id=query.from_user.id, file_id=file_id, caption=f_caption, protect_content=True if ident == "filep" else False)
+                await query.answer('Cʜᴇᴄᴋ PM, I Hᴀᴠᴇ Sᴇɴᴛ Fɪʟᴇs Iɴ Pᴍ', show_alert=True)
         except UserIsBlocked:
             await query.answer('Uɴʙʟᴏᴄᴋ Tʜᴇ Bᴏᴛ Mᴀʜɴ !', show_alert=True)
         except PeerIdInvalid:
@@ -429,9 +429,14 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
     elif query.data == "start":                        
         buttons = [[
+            InlineKeyboardButton("➕️ Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Cʜᴀᴛ ➕", url=f"http://t.me/{temp.U_NAME}?startgroup=true")
+            ],[
             InlineKeyboardButton("Sᴇᴀʀᴄʜ 🔎", switch_inline_query_current_chat=''), 
-            InlineKeyboardButton("𝙶𝚛𝚘𝚞𝚙 🔈", url="https://t.me/pschelpergroup")
-            ]]
+            InlineKeyboardButton("Cʜᴀɴɴᴇʟ 🔈", url="https://t.me/mkn_bots_updates")
+            ],[      
+            InlineKeyboardButton("Hᴇʟᴩ 🕸️", callback_data="help"),
+            InlineKeyboardButton("Aʙᴏᴜᴛ ✨", callback_data="about")
+        ]]
         await query.edit_message_media(InputMediaPhoto(random.choice(PICS), START_MESSAGE.format(user=query.from_user.mention, bot=client.mention), enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
        
     elif query.data == "help":
@@ -463,7 +468,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         
     elif query.data == "source":
         buttons = [[
-            InlineKeyboardButton('ꜱᴏᴜʀᴄᴇ ᴄᴏᴅᴇ', url='https://t.me/pschelpergroup')
+            InlineKeyboardButton('ꜱᴏᴜʀᴄᴇ ᴄᴏᴅᴇ', url='https://github.com/MrMKN/PROFESSOR-BOT')
             ],[
             InlineKeyboardButton('‹ Bᴀᴄᴋ', 'about')
         ]]
@@ -594,7 +599,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 InlineKeyboardButton(f"ᴡᴇʟᴄᴏᴍᴇ ᴍᴇꜱꜱᴀɢᴇ : {'ᴏɴ' if settings['welcome'] else 'ᴏꜰꜰ'}", f'setgs#welcome#{settings["welcome"]}#{str(grp_id)}')
             ]]
             await query.message.edit_reply_markup(InlineKeyboardMarkup(buttons))
-
 
 
 
