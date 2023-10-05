@@ -74,7 +74,7 @@ async def g_fil_mod(client, message):
 async def next_page(bot, query):
     ident, req, key, offset = query.data.split("_")
     if int(req) not in [query.from_user.id, 0]:
-        return await query.answer("SEARCH YOURSELF", show_alert=True)
+        return await query.answer("ഞാൻ താങ്കൾക് ഇതിന്റെ ഫയൽ നേരിട്ട് മെസ്സേജ് അയച്ചിട്ടുണ്ട്.", show_alert=True)
     try: offset = int(offset)
     except: offset = 0
     search = temp.GP_BUTTONS.get(key)
@@ -277,7 +277,7 @@ async def auto_filter(client, msg, spoll=False):
 
 
 async def advantage_spell_chok(msg):
-    gmsger=await msg.reply("I couldn't Find It. Please provide as : &lt;Year&gt; &lt;TVA/TVE/PB&gt;")
+    gmsger=await msg.reply("I couldn't Find It. Please provide as : &lt;TVA/TVE/PB&gt;")
     #await asyncio.sleep(IMDB_DELET_TIME)
     #await crl.delete()  
     #await msg.delete()
