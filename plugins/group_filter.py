@@ -193,10 +193,11 @@ async def auto_filter(client, msg, spoll=False):
             else:
                 files, offset, total_results = await get_search_results("noResult", offset=0, filter=True)
             if not files:
-                if settings["spell_check"]:
-                    return await advantage_spell_chok(msg)
-                else:
-                    return
+                if search not in ["tva", "tve", "pb"]:
+                    if settings["spell_check"]:
+                        return await advantage_spell_chok(msg)
+                    else:
+                        return
         else:
             return
     else:
@@ -281,7 +282,7 @@ async def auto_filter(client, msg, spoll=False):
 
 
 async def advantage_spell_chok(msg):
-    gmsger=await msg.reply("I couldn't Find It. Please provide as : &lt;TVA/TVE/PB&gt;")
+    gmsger=await msg.reply("സെർച്ച് ചെയ്യേണ്ട ഫോർമാറ്റ്  : &lt;PB/TVA/TVE&gt;\n\nഉദാഹരണം  : pb")
     #await asyncio.sleep(IMDB_DELET_TIME)
     #await crl.delete()  
     #await msg.delete()
