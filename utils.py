@@ -137,10 +137,10 @@ def list_to_str(k):
     else:
         return ' '.join(f'{elem}, ' for elem in k)
 
-__repo__ = "https://github.com/MrMKN/PROFESSOR-BOT"
+__repo__ = "https://github.com/madbronco/PROFESSOR-BOT"
 __version__ = "PROFESSOR-BOT ᴠ4.5.0"
 __license__ = "GNU GENERAL PUBLIC LICENSE V2"
-__copyright__ = "Copyright (C) 2023-present MrMKN <https://github.com/MrMKN>"
+__copyright__ = "𝙲𝚘𝚙𝚢𝚛𝚒𝚐𝚑𝚝 (𝙲) 𝟸𝟶𝟸𝟹-𝚙𝚛𝚎𝚜𝚎𝚗𝚝 𝙼𝚊𝚊𝚜𝚑 <https://github.com/madbronco>"
 
 async def search_gagala(text):
     usr_agent = {
@@ -358,9 +358,3 @@ async def admin_check(message: Message) -> bool:
 
 async def admin_filter(filt, client, message):
     return await admin_check(message)
-
-
-
-
-
-
