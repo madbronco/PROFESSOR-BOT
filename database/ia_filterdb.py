@@ -8,6 +8,7 @@ from umongo import Instance, Document, fields
 from motor.motor_asyncio import AsyncIOMotorClient
 from marshmallow.exceptions import ValidationError
 from info import FILE_DB_URL, FILE_DB_NAME, COLLECTION_NAME, MAX_RIST_BTNS
+from fuzzywuzzy import fuzz
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -56,15 +57,14 @@ async def save_file(media):
             logger.info(str(getattr(media, "file_name", "NO FILE NAME")) + " is saved in database")
             return True, 1
 
-
-
+    
 async def get_search_results(query, file_type=None, max_results=(MAX_RIST_BTNS), offset=0, filter=False):
     query = query.strip()
     if not query: raw_pattern = '.'
     elif ' ' not in query: raw_pattern = r'(\b|[\.\+\-_])' + query + r'(\b|[\.\+\-_])'
     else: raw_pattern = query.replace(' ', r'.*[\s\.\+\-_]')
     try: regex = re.compile(raw_pattern, flags=re.IGNORECASE)
-    except: return [], '', 0
+    except: return []
     filter = {'file_name': regex}
     if file_type: filter['file_type'] = file_type
 
@@ -79,6 +79,14 @@ async def get_search_results(query, file_type=None, max_results=(MAX_RIST_BTNS),
     cursor.skip(offset).limit(max_results)
     # Get list of files
     files = await cursor.to_list(length=max_results)
+    for file in files:
+        file.file_name = file.file_name[:-4]
+        file_namer = file.file_name.strip()
+        file_namer = file_namer.replace('TVA', 'Thozhil Vartha')
+        file_namer = file_namer.replace('TVE', 'Thozhil Veedhi')
+        file_namer = file_namer.replace('PB', 'Psc Bulletin')
+        file.file_name = file_namer  # Update the file_name in the document
+    
     return files, next_offset, total_results
 
 
