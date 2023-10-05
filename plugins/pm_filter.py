@@ -204,4 +204,4 @@ async def pm_AutoFilter(client, msg, pmspoll=False):
         await msg.message.delete()
 
 async def pm_spoll_choker(msg):
-    await msg.reply("ദയവായി ഗ്രൂപ്പ് വഴി സെർച്ച് ചെയ്യുക. @pschelpergroup")
+    await msg.reply("ദയവായി ഗ്രൂപ്പ് വഴി സെർച്ച് ചെയ്യുക.\n\n@pschelpergroup")
