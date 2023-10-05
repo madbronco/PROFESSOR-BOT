@@ -78,7 +78,7 @@ async def next_page(bot, query):
     try: offset = int(offset)
     except: offset = 0
     search = temp.GP_BUTTONS.get(key)
-    if not search: return await query.answer("Yᴏᴜ Aʀᴇ Usɪɴɢ Oɴᴇ Oғ Mʏ Oʟᴅ Mᴇssᴀɢᴇs, Pʟᴇᴀsᴇ Sᴇɴᴅ Tʜᴇ Rᴇǫᴜᴇsᴛ Aɢᴀɪɴ", show_alert=True)
+    if not search: return await query.answer("ഇത് പഴയ റിക്വസ്റ്റ് ആണ്. \nദയവായി വീണ്ടും റിക്വസ്റ്റ് ചെയ്യുക.", show_alert=True)
     
     files, n_offset, total = await get_search_results(search, offset=offset, filter=True)
     try: n_offset = int(n_offset)
