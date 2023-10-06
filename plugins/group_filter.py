@@ -88,9 +88,6 @@ async def next_page(bot, query):
     settings = await get_settings(query.message.chat.id)
     nxreq  = query.from_user.id if query.from_user else 0
 
-    pre = 'filep' if settings['file_secure'] else 'file'
-    req = message.from_user.id if message.from_user else 0
-
    
     if SHORT_URL and SHORT_API:          
         if settings["button"]:
