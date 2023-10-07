@@ -28,7 +28,7 @@ async def auto_pm_fill(b, m):
 
 async def pm_AutoFilter(client, msg, pmspoll=False):    
     if not pmspoll:
-        message = msg   
+        message = msg 
         if message.text.startswith("/"): return  # ignore commands
         if re.findall("((^\/|^,|^!|^\.|^[\U0001F600-\U000E007F]).*)", message.text): return
         if 0 < len(message.text) < 100:
@@ -37,4 +37,5 @@ async def pm_AutoFilter(client, msg, pmspoll=False):
         else: return 
 
 async def pm_spoll_choker(msg):
-    await msg.reply("ദയവായി ഗ്രൂപ്പ് വഴി സെർച്ച് ചെയ്യുക.\n\n@pschelpergroup")
+    vid = msg.chat.id
+    await msg.reply("ദയവായി ഗ്രൂപ്പ് വഴി സെർച്ച് ചെയ്യുക.\n\n@pschelpergroup\n\n{vid}")
