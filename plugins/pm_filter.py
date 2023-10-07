@@ -38,4 +38,5 @@ async def pm_AutoFilter(client, msg, pmspoll=False):
 
 async def pm_spoll_choker(msg):
     vid = msg.from_user.id
-    await msg.reply(f"ദയവായി ഗ്രൂപ്പ് വഴി സെർച്ച് ചെയ്യുക.\n\n@pschelpergroup\n\n{vid}")
+    if vid != 6439369694:
+        await msg.reply(f"ദയവായി ഗ്രൂപ്പ് വഴി സെർച്ച് ചെയ്യുക.\n\n@pschelpergroup")
