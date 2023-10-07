@@ -37,4 +37,5 @@ async def pm_AutoFilter(client, msg, pmspoll=False):
         else: return 
 
 async def pm_spoll_choker(msg):
-    await msg.reply("ദയവായി ഗ്രൂപ്പ് വഴി സെർച്ച് ചെയ്യുക.\n\n@pschelpergroup\n\n")
+    vid = msg.from_user.id
+    await msg.reply(f"ദയവായി ഗ്രൂപ്പ് വഴി സെർച്ച് ചെയ്യുക.\n\n@pschelpergroup\n\n{vid}")
