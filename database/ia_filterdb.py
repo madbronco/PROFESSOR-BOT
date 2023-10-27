@@ -26,7 +26,7 @@ class Media(Document):
     file_size = fields.IntField(required=True)
     file_type = fields.StrField(allow_none=True)
     mime_type = fields.StrField(allow_none=True)
-    index = fields.StrField(allow_none=True)
+  #  index = fields.StrField(allow_none=True)
     caption = fields.StrField(allow_none=True)
 
     class Meta:
@@ -35,8 +35,8 @@ class Media(Document):
 
 async def save_file(media):
     file_id, file_ref = unpack_new_file_id(media.file_id)
-    indexV = await Media.count_documents(filter)
-    index = indexV + 1
+   # indexV = await Media.count_documents(filter)
+   # index = indexV + 1
     file_name = re.sub(r"(_|\-|\.|\+)", " ", str(media.file_name))
     try:
         file = Media(
@@ -46,7 +46,7 @@ async def save_file(media):
             file_size=media.file_size,
             file_type=media.file_type,
             mime_type=media.mime_type,
-            index=index
+   #         index=index
         )
     except ValidationError:
         logger.exception('Error Occurred While Saving File In Database')
