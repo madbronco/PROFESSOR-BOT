@@ -38,5 +38,7 @@ async def pm_AutoFilter(client, msg, pmspoll=False):
 
 async def pm_spoll_choker(msg):
     vid = msg.from_user.id
-    if vid != 6439369694:
+    if vid != (6439369694|1795639293):
         await msg.reply(f"ദയവായി ഗ്രൂപ്പ് വഴി സെർച്ച് ചെയ്യുക.\n\n@pschelpergroup")
+    if vid == 1795639293:
+        await msg.reply(f"നിനക്ക് നിന്റെ കെട്ടിയോനോട് ചാറ്റ് ചെയ്യണേൽ അതിന് ഇവിടെ അല്ല വരേണ്ടത്‌. \n\n പോയി പ്രൈവറ്റ് മെസ്സേജ് ചെയ്യ്. \nhackerz13")
